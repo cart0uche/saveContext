@@ -46,10 +46,8 @@ class Compress:
 		return self.__zipFileName
 
 # TODO : 
-# nommer le zip avec la date et l'heure
-# gerer la compression selon les extentions fournit en parametre		
 # gerer une liste de repertoire de logs
-# archiver les logs
+
 
 def main():
 	c = Compress('/home/saou/Documents/saveContext/test/log1/','log')

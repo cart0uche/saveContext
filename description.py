@@ -19,7 +19,6 @@ class Description(Tkinter.Tk):
 	def initialize(self):
 		self.grid()
 
-		# The Application just crashs, please describe what's just happend
 		self.message = Tkinter.Message(self,text="The application just crashs, please describe what's just happend.",width=700)
 		self.message.grid(padx=10,pady=10,column=0,row=0,sticky='W')
 
@@ -48,7 +47,7 @@ class Description(Tkinter.Tk):
 
 
 # TODO :
-# ajouter un icone
+# ajouter un icon
 
 def main():
 	app = Description(None)
