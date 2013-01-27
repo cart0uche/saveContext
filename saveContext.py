@@ -14,7 +14,7 @@ def main():
 	conf = config.Config()
 
 	try:
-		subprocess.call([conf.getConfigValue(CONFIG_PROGRAM)])
+		subprocess.call([conf.programName])
 	except Exception, err:
 		print "# Oops! <%s> crashs" % conf.programName
 		c = compress.Compress(conf.logsPath,conf.extentions)
