@@ -16,7 +16,7 @@ class Compress:
 		self.__extention = extention
 
 	def zipContext(self):
-		self.__zipFileName = 'context_'+time.strftime('%d_%m_%Y_%H:%M:%S',time.localtime())+'.zip'
+		self.__zipFileName = 'context_'+time.strftime('%d-%m-%Y_%H-%M-%S',time.localtime())+'.zip'
 		if self.__logsPath is not None:
 			f = zipfile.ZipFile(self.__zipFileName,'w',zipfile.ZIP_DEFLATED)
 			print "# logsPath : %s" % self.__logsPath
@@ -37,7 +37,7 @@ class Compress:
 		else:
 			print "No description given"
 
-	def archiveContext(self):	
+	def archiveContext(self):
 		os.rename(self.__zipFileName,os.path.join("archive",self.__zipFileName))
 		print "# archive file " + self.__zipFileName
 
@@ -45,12 +45,12 @@ class Compress:
 	def fileToSend(self):
 		return self.__zipFileName
 
-# TODO : 
-# gerer une liste de repertoire de logs
+
+# TODO : gerer une liste de repertoire de logs
 
 
 def main():
-	c = Compress('/home/saou/Documents/saveContext/test/log1/','log')
+	c = Compress('test/log1/','log')
 	c.zipContext()
 	c.archiveContext()
 
