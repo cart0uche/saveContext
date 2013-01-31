@@ -5,7 +5,7 @@
 import os
 import ConfigParser
 
-CONFIG_FILE    = "config.ini"
+CONFIG_FILE            = "config.ini"
 CONFIG_GENERAL_SECTION = "General"
 CONFIG_PROGRAM         = "program"
 CONFIG_SEND_MAIL       = "sendMail"
@@ -44,11 +44,11 @@ class Config:
 	def __loadConfigValue(self,config,section,option):
 		return config.get(section,option)
 
-	@property				 
+	@property
 	def programName(self):
 		return self.__programName
 
-	@property						 	
+	@property
 	def sendMail(self):
 		return self.__sendMail
 
@@ -60,11 +60,11 @@ class Config:
 	def logsPath(self):
 		return self.__logsPath
 
-	@property	
+	@property
 	def extentions(self):
 		return self.__extentions
 
-	@property	
+	@property
 	def archivePath(self):
 		return self.__archivePath
 
