@@ -26,28 +26,25 @@ class Description(Tkinter.Tk):
 		self.text.grid(padx=10,pady=10,column=0,row=1,sticky='WENS')
 
 		buttonSave = Tkinter.Button(self,text=u"Save !",command=self.OnButtonClick)
-		buttonSave.grid(column=0,row=2)	
+		buttonSave.grid(column=0,row=2)
 
 		buttonNoComment = Tkinter.Button(self,text=u"No comment..",command=self.closeWindows)
-		buttonNoComment.grid(padx=10,pady=10,column=0,row=3)	
+		buttonNoComment.grid(padx=10,pady=10,column=0,row=3)
 
 		self.title("saveContext : what's append ?")
 		self.protocol("WM_DELETE_WINDOW", self.closeWindows)
 		self.mainloop()
 
 	def OnButtonClick(self):
-		file = open(DESCRIPTION_TEMP_FILE,'w+')
-		file.write(time.strftime('%c',time.localtime())+'\n')
-		file.write(self.text.get(1.0, END))
-		file.close()
+		fileDescription = open(DESCRIPTION_TEMP_FILE,'w+')
+		fileDescription.write(time.strftime('%c',time.localtime())+'\n')
+		fileDescription.write(self.text.get(1.0, END))
+		fileDescription.close()
 		self.destroy()
 
 	def closeWindows(self):
 		self.destroy()
 
-
-# TODO :
-# ajouter un icon
 
 def main():
 	app = Description(None)
