@@ -38,7 +38,7 @@ class Description(Tkinter.Tk):
 	def OnButtonClick(self):
 		fileDescription = open(DESCRIPTION_TEMP_FILE,'w+')
 		fileDescription.write(time.strftime('%c',time.localtime())+'\n')
-		fileDescription.write(self.text.get(1.0, END))
+		fileDescription.write(self.text.get(1.0, END).encode('utf-8'))
 		fileDescription.close()
 		self.destroy()
 
