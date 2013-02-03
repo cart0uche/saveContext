@@ -4,6 +4,7 @@
 main()
 {
    int x;
-   printf("Attention je vais bientot planter !\n");
-   x = 5/0;
+   printf("Press enter to crash !\n");
+   getchar();
+   x = 1/0;
 }
