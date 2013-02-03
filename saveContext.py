@@ -3,7 +3,7 @@
 # saveContext
 
 import os
-from subprocess import *
+import subprocess
 import config
 import compress
 import mail
@@ -14,9 +14,10 @@ def main():
 	conf = config.Config()
 
 	try:
-		subprocess.call([conf.programName])
-	except Exception, err:
-		print "# Oops! <%s> crashs" % conf.programName
+		print "Launch %s ..." % conf.programName
+		subprocess.check_call([conf.programName])
+	except Exception as e:
+		print "# Oops! %s crashs" % conf.programName
 		c = compress.Compress(conf.logsPath,conf.extentions)
 		c.zipContext()
 		if conf.askDescription == '1':
