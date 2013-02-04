@@ -3,7 +3,7 @@
 # saveContext
 
 import time
-from Tkinter import *
+from Tkinter import END
 import Tkinter
 
 DESCRIPTION_TEMP_FILE = 'desc.txt'
