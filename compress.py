@@ -17,15 +17,16 @@ class Compress:
 
 	def zipContext(self):
 		self.__zipFileName = 'context_'+time.strftime('%d-%m-%Y_%H-%M-%S',time.localtime())+'.zip'
-		if self.__logsPath is not None:
-			f = zipfile.ZipFile(self.__zipFileName,'w',zipfile.ZIP_DEFLATED)
-			print "# logsPath : %s" % self.__logsPath
-			logsFile = glob.glob(os.path.join(self.__logsPath,"*."+self.__extention))
-			for logFile in logsFile:
-				print "# zip : %s" % logFile
-				f.write(logFile,arcname=os.path.basename(logFile))
-			f.close()
-			print "# " + self.__zipFileName + " created"
+		f = zipfile.ZipFile(self.__zipFileName,'w',zipfile.ZIP_DEFLATED)
+		for logPath in self.__logsPath:
+			if logPath is not None:
+				print "# logsPath : %s" % logPath
+				logsFile = glob.glob(os.path.join(logPath,"*."+self.__extention))
+				for logFile in logsFile:
+					print "# zip : %s" % logFile
+					f.write(logFile,arcname=os.path.basename(logFile))
+		f.close()
+		print "# " + self.__zipFileName + " created"
 
 	def zipDescription(self):
 		if os.path.exists(DESCRIPTION_TEMP_FILE):
@@ -46,11 +47,9 @@ class Compress:
 		return self.__zipFileName
 
 
-# TODO : gerer une liste de repertoire de logs
-
 
 def main():
-	c = Compress('test/log1/','log')
+	c = Compress(['test/log1','test/log2'],'log')
 	c.zipContext()
 	c.archiveContext()
 

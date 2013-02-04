@@ -34,7 +34,7 @@ class Config:
 		self.__askDescription = self.__loadConfigValue(config,CONFIG_GENERAL_SECTION,CONFIG_ASK_DESCRIPTION)
 
 		# Section Zip
-		self.__logsPath       = self.__loadConfigValue(config,CONFIG_ZIP_SECTION,CONFIG_LOGS)
+		self.__logsPath       = self.__loadConfigValue(config,CONFIG_ZIP_SECTION,CONFIG_LOGS).split(',')
 		self.__extentions     = self.__loadConfigValue(config,CONFIG_ZIP_SECTION,CONFIG_EXTENTIONS)
 		self.__archivePath    = self.__loadConfigValue(config,CONFIG_ZIP_SECTION,CONFIG_ARCHIVE)
 
