@@ -11,7 +11,7 @@ from email.MIMEMultipart import MIMEMultipart
 COMMASPACE = ', '
 
 class Mail:
-	def sendMail(self,sendFrom,sendTo,fileToSend):
+	def sendMail(self,sendFrom,sendTo,smtpServer,fileToSend):
 		print '# send mail to' + str(sendTo) + ' with file ' + fileToSend
 		msg = MIMEMultipart()
 
@@ -24,7 +24,7 @@ class Mail:
 		encoders.encode_base64(attachedFile)
 		attachedFile.add_header('Content-Disposition','attachment',filename=fileToSend)
 		msg.attach(attachedFile)
-		s = smtplib.SMTP('localhost')
+		s = smtplib.SMTP(smtpServer)
 		s.sendmail(sendFrom, sendTo, msg.as_string())
 		s.quit()
 

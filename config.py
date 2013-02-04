@@ -19,6 +19,7 @@ CONFIG_ARCHIVE         = "archive"
 CONFIG_MAIL_SECTION    = "Mail"
 CONFIG_SEND_FROM       = "sendFrom"
 CONFIG_SEND_TO         = "sendTo"
+CONFIG_SMTP_SERVER     = "smtpServer"
 
 class Config:
 
@@ -40,6 +41,7 @@ class Config:
 		# Section Mail
 		self.__sendFrom       = self.__loadConfigValue(config,CONFIG_MAIL_SECTION,CONFIG_SEND_FROM)
 		self.__sendTo         = self.__loadConfigValue(config,CONFIG_MAIL_SECTION,CONFIG_SEND_TO).split(',')
+		self.__smtpServer     = self.__loadConfigValue(config,CONFIG_MAIL_SECTION ,CONFIG_SMTP_SERVER)
 
 	def __loadConfigValue(self,config,section,option):
 		return config.get(section,option)
@@ -75,6 +77,10 @@ class Config:
 	@property
 	def sendTo(self):
 		return self.__sendTo
+
+	@property
+	def smtpServer(self):
+		return self.__smtpServer
 
 
 def main():

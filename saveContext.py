@@ -14,7 +14,7 @@ def main():
 	conf = config.Config()
 
 	try:
-		print "Launch %s ..." % conf.programName
+		print "# Launch %s ..." % conf.programName
 		subprocess.check_call([conf.programName])
 	except Exception as e:
 		print "# Oops! %s crashs" % conf.programName
@@ -25,7 +25,10 @@ def main():
 			c.zipDescription()
 		if conf.sendMail == '1':
 			m = mail.Mail()
-			m.sendMail(conf.sendFrom,conf.sendTo,c.fileToSend)
+			try:
+				m.sendMail(conf.sendFrom,conf.sendTo,conf.smtpServer,c.fileToSend)
+			except Exception:
+				print "# Errors occcured when sending mail"
 		c.archiveContext()
 
 if __name__ == "__main__":
